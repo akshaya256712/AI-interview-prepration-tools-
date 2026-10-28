@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Interview Preparation Tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">AI</span><span>Interview<span class="brand-light">Prep</span></span></a>
+    <nav><a href="#practice">Practice</a><a href="#history">My History</a></nav>
+    <div class="auth-actions"><button id="show-login" class="btn btn-ghost">Log in</button><button id="show-register" class="btn btn-primary">Create account</button><button id="logout" class="btn btn-ghost hidden">Log out</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR NEXT OPPORTUNITY STARTS HERE</p>
+        <h1>Walk into your next interview <span>with confidence.</span></h1>
+        <p class="hero-text">Practice common interview questions, write your answers, and track your progress in one simple workspace.</p>
+        <a class="btn btn-primary btn-large" href="#practice">Start practicing <span aria-hidden="true">→</span></a>
+        <div class="hero-points"><span>✓ Beginner friendly</span><span>✓ Track your progress</span><span>✓ No AI API required</span></div>
+      </div>
+      <div class="hero-card">
+        <div class="card-top"><span class="status-dot"></span><span>YOUR PRACTICE PLAN</span><span class="card-icon">✦</span></div>
+        <h2>Small steps. Strong answers.</h2>
+        <div class="plan-row"><span class="plan-icon purple">01</span><div><b>Choose a category</b><small>HR, technical, or behavioral</small></div><span class="check">✓</span></div>
+        <div class="plan-row"><span class="plan-icon blue">02</span><div><b>Practice your response</b><small>Write and refine your answer</small></div><span class="check">✓</span></div>
+        <div class="plan-row"><span class="plan-icon green">03</span><div><b>Review your progress</b><small>Build a consistent habit</small></div><span class="check">✓</span></div>
+        <div class="mini-progress"><div><span>Example weekly goal</span><b>3 of 5 sessions</b></div><div class="progress-track"><span style="width:60%"></span></div></div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Your statistics">
+      <div class="stat"><span class="stat-icon">▤</span><div><strong id="stat-questions">0</strong><small>Questions available</small></div></div>
+      <div class="stat"><span class="stat-icon">✎</span><div><strong id="stat-practiced">0</strong><small>Answers practiced</small></div></div>
+      <div class="stat"><span class="stat-icon">↗</span><div><strong id="stat-sessions">0</strong><small>Sessions completed</small></div></div>
+    </section>
+
+    <section id="practice" class="section">
+      <div class="section-heading"><div><p class="eyebrow">PRACTICE ROOM</p><h2>Prepare one question at a time</h2><p class="muted">Pick a category, choose a question, and save your answer for later review.</p></div></div>
+      <div class="practice-layout">
+        <aside class="panel filters">
+          <label for="category">Question category</label>
+          <select id="category"><option value="All">All categories</option><option value="HR">HR & introduction</option><option value="Technical">Technical</option><option value="Behavioral">Behavioral</option><option value="Career">Career goals</option></select>
+          <label for="search">Search questions</label><input id="search" type="search" placeholder="e.g. strengths, arrays...">
+          <div class="question-list" id="question-list"><p class="muted">Loading questions…</p></div>
+        </aside>
+        <section class="panel answer-panel">
+          <div class="question-meta"><span id="question-category" class="pill">GET STARTED</span><span id="question-number" class="muted"></span></div>
+          <h3 id="question-title">Choose a question to begin</h3>
+          <p id="question-tip" class="muted">A helpful approach: answer clearly, give an example, and explain what you learned.</p>
+          <label for="answer">Your answer / notes</label>
+          <textarea id="answer" rows="8" placeholder="Write your answer here…"></textarea>
+          <div class="answer-footer"><span id="word-count" class="muted">0 words</span><button id="save-answer" class="btn btn-primary" disabled>Save practice</button></div>
+          <p id="practice-message" class="message" role="status"></p>
+          <div class="hint"><span>✦</span><p><b>Practice tip</b><br>For experience-based questions, try the STAR method: Situation, Task, Action, Result.</p></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="history" class="section history-section">
+      <div class="section-heading"><div><p class="eyebrow">YOUR GROWTH</p><h2>Practice history</h2><p class="muted">Your saved answers and recent practice sessions.</p></div><button id="refresh-history" class="btn btn-ghost">Refresh history ↻</button></div>
+      <div id="history-list" class="history-grid"><div class="empty-state">Log in to view your saved practice history.</div></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">AI</span><span>Interview<span class="brand-light">Prep</span></span></a><p>Made for learning, practice, and confidence.</p><small>Educational project demo · Answers are not evaluated by an AI model.</small></footer>
+
+  <div id="auth-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal-card"><button id="close-modal" class="modal-close" aria-label="Close">×</button><p class="eyebrow">WELCOME TO INTERVIEWPREP</p><h2 id="auth-title">Create your account</h2><p id="auth-description" class="muted">Save your answers and continue practicing later.</p>
+      <form id="auth-form"><label for="auth-name">Name</label><input id="auth-name" autocomplete="name" placeholder="Your name"><label for="auth-email">Email</label><input id="auth-email" type="email" autocomplete="email" required placeholder="you@example.com"><label for="auth-password">Password</label><input id="auth-password" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"><button id="auth-submit" class="btn btn-primary btn-full" type="submit">Create account</button><p id="auth-message" class="message" role="status"></p></form>
+      <p class="modal-switch"><span id="switch-copy">Already have an account?</span> <button id="switch-auth" class="text-button">Log in</button></p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
